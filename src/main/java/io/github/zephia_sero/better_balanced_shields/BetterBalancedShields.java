@@ -64,14 +64,10 @@ public class BetterBalancedShields
                 pe.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
             else
                 pe.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
-            try (Level level = pe.level()) {
-                RandomSource random = level.random;
-                float volume = Config.break_volume(random);
-                float pitch = Config.break_pitch(random);
-                pe.playSound(SoundEvents.SHIELD_BREAK, volume, pitch);
-            } catch (IOException e) {
-                LOGGER.error(e.getLocalizedMessage());
-            }
+            RandomSource random = pe.level().random;
+            float volume = Config.break_volume(random);
+            float pitch = Config.break_pitch(random);
+            pe.playSound(SoundEvents.SHIELD_BREAK, volume, pitch);
         }
     }
 
@@ -132,10 +128,10 @@ public class BetterBalancedShields
         if (source.getDirectEntity() instanceof Arrow arrow && !Config.vanillaArrows) {
             if (Config.reflectableArrows) {
                 if (Config.arrowAutoaim)
-                    arrow.setDeltaMovement(arrow.getDeltaMovement().scale(Config.arrowReflectMultiplier));
+                    arrow.setDeltaMovement(arrow.getDeltaMovement().scale(-Config.arrowReflectMultiplier));
                 else {
                     Entity e = event.getEntity();
-                    double vel = arrow.getDeltaMovement().length() * -Config.arrowReflectMultiplier;
+                    double vel = arrow.getDeltaMovement().length() * Config.arrowReflectMultiplier;
                     Vec3 forward = e.getForward();
                     arrow.setDeltaMovement(forward.scale(vel));
                     arrow.setXRot(e.getXRot());
@@ -150,7 +146,8 @@ public class BetterBalancedShields
             event.setBlockedDamage(dmg);
             float thornsDmg = (float)(Config.meleeDamageReflection * orig);
             Entity en = event.getEntity();
-            try (Level level = en.level()) {
+            Level level = en.level();
+            //try () {
                 if (thornsDmg > 0) {
                     Holder<DamageType> dmgType = level
                             .registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
@@ -169,16 +166,16 @@ public class BetterBalancedShields
                     }
                     pl.stopUsingItem();
                 }
-            } catch (IOException e) {
-                LOGGER.error(e.getLocalizedMessage());
-            }
+            //} catch (IOException e) {
+            //    LOGGER.error(e.getLocalizedMessage());
+            //}
         } else if (source.getDirectEntity() instanceof ThrownPotion pot && !Config.vanillaPotions) {
             if (Config.reflectablePotions) {
                 if (Config.potionAutoaim)
-                    pot.setDeltaMovement(pot.getDeltaMovement().scale(Config.potionReflectMultiplier));
+                    pot.setDeltaMovement(pot.getDeltaMovement().scale(-Config.potionReflectMultiplier));
                 else {
                     Entity e = event.getEntity();
-                    double vel = pot.getDeltaMovement().length() * -Config.potionReflectMultiplier;
+                    double vel = pot.getDeltaMovement().length() * Config.potionReflectMultiplier;
                     pot.setDeltaMovement(e.getForward().scale(vel));
                     pot.setXRot(e.getXRot());
                     pot.setYRot(e.getYRot());

@@ -35,8 +35,8 @@ public class Config
             .define("REFLECTABLE_POTIONS", true);
     private static final ForgeConfigSpec.ConfigValue<Double> POTION_REFLECT_MULTIPLIER = BUILDER
             .comment("Velocity multiplier to reflected potions")
-            .comment("Negative numbers reflect away from you, recommend keeping the number at its default, or more negative")
-            .define("POTION_REFLECT_MULTIPLIER", -0.75);
+            .comment("Positive numbers reflect away from you, recommend keeping the number at its default, or higher")
+            .define("POTION_REFLECT_MULTIPLIER", 0.75);
     private static final ForgeConfigSpec.ConfigValue<Double> POTION_DOT_MINIMUM = BUILDER
             .comment("Minimum value of the dot product between the player's facing direction and the inverse of the projectile's normalized motion in order to count as a shield hit")
             .comment("In other words, -1 means you reflect arrows completely opposite which direction you're looking, 1 means you have to be looking the exact same direction")
@@ -67,8 +67,8 @@ public class Config
             .define("REFLECTABLE_ARROWS", true);
     private static final ForgeConfigSpec.ConfigValue<Double> ARROW_REFLECT_MULTIPLIER = BUILDER
             .comment("Velocity multiplier to reflected arrow")
-            .comment("Negative numbers reflect away from you")
-            .define("ARROW_REFLECT_MULTIPLIER", -0.25);
+            .comment("Positive numbers reflect away from you")
+            .define("ARROW_REFLECT_MULTIPLIER", 0.25);
     private static final ForgeConfigSpec.ConfigValue<Double> ARROW_DOT_MINIMUM = BUILDER
             .comment("See POTION_DOT_MINIMUM")
             .define("ARROW_DOT_MINIMUM", 0.125);
