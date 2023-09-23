@@ -11,8 +11,8 @@ updates or downgrades! -- which makes shields:
 
 And again, NO, I will not be porting it to any version or mod loader unless I
 want to!!!!!!!!!!!!!!! If you make an issue or comment asking for this ANYWAY,
-expect nothing more than a 😂 and your issue closed without resolution!!!! Also
-check the license!!! You can just fork the project and make your own port if you
+expect nothing more than a single emoji and your issue closed without resolution!!!!
+Also check the license!!! You can just fork the project and make your own port if you
 want it so bad!!!!
 
 Bye!!!
