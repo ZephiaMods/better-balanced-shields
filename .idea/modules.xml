@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/better-balanced-shields.main.iml" filepath="$PROJECT_DIR$/.idea/modules/better-balanced-shields.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/better-balanced-shields.test.iml" filepath="$PROJECT_DIR$/.idea/modules/better-balanced-shields.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.zephia_sero.better_balanced_shields.better-balanced-shields.main.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.zephia_sero.better_balanced_shields.better-balanced-shields.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.zephia_sero.better_balanced_shields.better-balanced-shields.test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.zephia_sero.better_balanced_shields.better-balanced-shields.test.iml" />
     </modules>
   </component>
 </project>
