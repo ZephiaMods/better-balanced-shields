@@ -218,7 +218,6 @@ public class BetterBalancedShields
                     double vel = new Vec3d(pot.motionX, pot.motionY, pot.motionZ).lengthVector() * BBSConfig.potionReflectMultiplier;
                     Vec3d forward = e.getForward().scale(vel);
                     pot.setVelocity(forward.x, forward.y, forward.z);
-                    pot.set
                 }
             } else if (BBSConfig.blockablePotions)
                 pot.setDead();
