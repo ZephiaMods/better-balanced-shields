@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class Config
 {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder()
-            .comment("You may notice none of these options have ranges. Mandatory ranges are for pussies. Have fun!");
+            .comment("You may notice none of these options have ranges, so changing things can get wacky if you don't stick to what the comments suggest. Have fun!");
 
     private static final ForgeConfigSpec.BooleanValue BLOCKABLE_POTIONS = BUILDER
             .comment("Potion stuff!")

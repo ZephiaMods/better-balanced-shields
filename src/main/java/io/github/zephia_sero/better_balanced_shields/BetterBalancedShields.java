@@ -122,8 +122,7 @@ public class BetterBalancedShields
     }
 
     @SubscribeEvent
-    public void onShieldBlock(ShieldBlockEvent event)
-    {
+    public void onShieldBlock(ShieldBlockEvent event) {
         DamageSource source = event.getDamageSource();
         if (source.getDirectEntity() instanceof Arrow arrow && !Config.vanillaArrows) {
             if (Config.reflectableArrows) {
@@ -142,30 +141,30 @@ public class BetterBalancedShields
                 arrow.kill();
         } else if ((source.getDirectEntity() instanceof Mob || source.getDirectEntity() instanceof Player) && !Config.vanillaMelee) {
             float orig = event.getBlockedDamage();
-            float dmg = (float)(1.0 - Config.meleeDamageMultiplier) * orig;
+            float dmg = (float) (1.0 - Config.meleeDamageMultiplier) * orig;
             event.setBlockedDamage(dmg);
-            float thornsDmg = (float)(Config.meleeDamageReflection * orig);
+            float thornsDmg = (float) (Config.meleeDamageReflection * orig);
             Entity en = event.getEntity();
             Level level = en.level();
             //try () {
-                if (thornsDmg > 0) {
-                    Holder<DamageType> dmgType = level
-                            .registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
-                            .getHolderOrThrow(DamageTypes.THORNS);
-                    DamageSource dmgSrc = new DamageSource(dmgType, en);
-                    source.getDirectEntity().hurt(dmgSrc, thornsDmg);
+            if (thornsDmg > 0) {
+                Holder<DamageType> dmgType = level
+                        .registryAccess().registryOrThrow(Registries.DAMAGE_TYPE)
+                        .getHolderOrThrow(DamageTypes.THORNS);
+                DamageSource dmgSrc = new DamageSource(dmgType, en);
+                source.getDirectEntity().hurt(dmgSrc, thornsDmg);
+            }
+            if (en instanceof Player pl) {
+                float volume = Config.block_volume(level.random);
+                float pitch = Config.block_pitch(level.random);
+                pl.playSound(SoundEvents.SHIELD_BLOCK, volume, pitch);
+                if (Config.meleeScaledShieldDamage) {
+                    take_shield_damage(pl, Config.meleeShieldDamage * orig);
+                } else {
+                    take_shield_damage(pl, Config.meleeShieldDamage);
                 }
-                if (en instanceof Player pl) {
-                    float volume = Config.block_volume(level.random);
-                    float pitch = Config.block_pitch(level.random);
-                    pl.playSound(SoundEvents.SHIELD_BLOCK, volume, pitch);
-                    if (Config.meleeScaledShieldDamage) {
-                        take_shield_damage(pl, Config.meleeShieldDamage * orig);
-                    } else {
-                        take_shield_damage(pl, Config.meleeShieldDamage);
-                    }
-                    pl.stopUsingItem();
-                }
+                pl.stopUsingItem();
+            }
             //} catch (IOException e) {
             //    LOGGER.error(e.getLocalizedMessage());
             //}
@@ -180,22 +179,8 @@ public class BetterBalancedShields
                     pot.setXRot(e.getXRot());
                     pot.setYRot(e.getYRot());
                 }
-            }
-            else if (Config.blockablePotions)
+            } else if (Config.blockablePotions)
                 pot.kill();
         }
     }
-
-    /*// You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
-    }*/
 }
