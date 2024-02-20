@@ -35,7 +35,7 @@ public class BetterBalancedShields
 {
     public static final String MODID = "better_balanced_shields";
     public static final String NAME = "Better Balanced Shields";
-    public static final String VERSION = "0.1.0";
+    public static final String VERSION = "0.1.1";
 
     static Logger logger;
 
