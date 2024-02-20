@@ -63,7 +63,7 @@ public class BetterBalancedShields
             if (hand == InteractionHand.MAIN_HAND)
                 pe.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
             else
-                pe.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+                pe.setItemSlot(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
             RandomSource random = pe.level().random;
             float volume = Config.break_volume(random);
             float pitch = Config.break_pitch(random);
