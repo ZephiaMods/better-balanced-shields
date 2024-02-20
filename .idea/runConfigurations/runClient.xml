@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <component>
   <configuration default="false" factoryName="Application" name="runClient" singleton="false" type="Application">
-    <option name="MAIN_CLASS_NAME" value="cpw.mods.bootstraplauncher.BootstrapLauncher"/>
-    <option name="VM_PARAMETERS" value="-Dforge.logging.console.level=debug -Dforge.logging.markers=REGISTRIES -DlegacyClassPath.file=/home/zephia/repos/better-balanced-shields/build/classpath/runClient_minecraftClasspath.txt -DignoreList=bootstraplauncher,securejarhandler,asm-commons,asm-util,asm-analysis,asm-tree,asm,JarJarFileSystems,client-extra,fmlcore,javafmllanguage,lowcodelanguage,mclanguage,forge- -DmergeModules=jna-5.10.0.jar,jna-platform-5.10.0.jar -Dforge.enabledGameTestNamespaces=better_balanced_shields -Dforge.enableGameTest=true -Djava.net.preferIPv6Addresses=system -p /home/zephia/.gradle/caches/modules-2/files-2.1/cpw.mods/bootstraplauncher/1.1.2/c546e00443d8432cda6baa1c860346980742628/bootstraplauncher-1.1.2.jar:/home/zephia/.gradle/caches/modules-2/files-2.1/cpw.mods/securejarhandler/2.1.10/51e6a22c6c716beb11e244bf5b8be480f51dd6b5/securejarhandler-2.1.10.jar:/home/zephia/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.5/19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0/asm-commons-9.5.jar:/home/zephia/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.5/64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe/asm-util-9.5.jar:/home/zephia/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.5/490bacc77de7cbc0be1a30bb3471072d705be4a4/asm-analysis-9.5.jar:/home/zephia/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.5/fd33c8b6373abaa675be407082fdfda35021254a/asm-tree-9.5.jar:/home/zephia/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.5/dc6ea1875f4d64fbc85e1691c95b96a3d8569c90/asm-9.5.jar:/home/zephia/.gradle/caches/modules-2/files-2.1/net.minecraftforge/JarJarFileSystems/0.3.19/2464eb7d6b9ddb9db36a82cf8a95193e5c6fe020/JarJarFileSystems-0.3.19.jar --add-modules ALL-MODULE-PATH --add-opens java.base/java.util.jar=cpw.mods.securejarhandler --add-opens java.base/java.lang.invoke=cpw.mods.securejarhandler --add-exports java.base/sun.security.util=cpw.mods.securejarhandler --add-exports jdk.naming.dns/com.sun.jndi.dns=java.naming"/>
-    <option name="PROGRAM_PARAMETERS" value="--launchTarget forgeclientuserdev --version MOD_DEV --assetIndex 5 --assetsDir /home/zephia/.gradle/caches/forge_gradle/assets --gameDir . --fml.forgeVersion 47.1.0 --fml.mcVersion 1.20.1 --fml.forgeGroup net.minecraftforge --fml.mcpVersion 20230612.114412"/>
+    <option name="MAIN_CLASS_NAME" value="net.minecraftforge.legacydev.MainClient"/>
+    <option name="VM_PARAMETERS" value="-Dforge.logging.console.level=debug -Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP"/>
+    <option name="PROGRAM_PARAMETERS" value=""/>
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run"/>
     <module name="better-balanced-shields.main"/>
     <envs>
-      <env name="MOD_CLASSES" value="better_balanced_shields%%$PROJECT_DIR$/build/resources/main:better_balanced_shields%%$PROJECT_DIR$/build/classes/java/main"/>
-      <env name="MCP_MAPPINGS" value="official_1.20.1"/>
+      <env name="MCP_TO_SRG" value="$PROJECT_DIR$/build/createSrgToMcp/output.srg"/>
+      <env name="MOD_CLASSES" value="$PROJECT_DIR$/build/resources/main:$PROJECT_DIR$/build/classes/java/main"/>
+      <env name="mainClass" value="net.minecraft.launchwrapper.Launch"/>
+      <env name="MCP_MAPPINGS" value="snapshot_20171003-1.12"/>
+      <env name="FORGE_VERSION" value="14.23.5.2859"/>
+      <env name="assetIndex" value="1.12"/>
+      <env name="assetDirectory" value="/home/zephia/.gradle/caches/forge_gradle/assets"/>
+      <env name="nativesDirectory" value="$PROJECT_DIR$/build/natives"/>
+      <env name="FORGE_GROUP" value="net.minecraftforge"/>
+      <env name="tweakClass" value="net.minecraftforge.fml.common.launcher.FMLTweaker"/>
+      <env name="MC_VERSION" value="${MC_VERSION}"/>
     </envs>
     <method v="2">
       <option enabled="true" name="Make"/>
-      <option enabled="true" externalProjectPath="$PROJECT_DIR$" name="Gradle.BeforeRunTask" tasks=":prepareRunClientCompile"/>
+      <option enabled="true" externalProjectPath="$PROJECT_DIR$" name="Gradle.BeforeRunTask" tasks=":prepareRunClient"/>
     </method>
   </configuration>
 </component>
